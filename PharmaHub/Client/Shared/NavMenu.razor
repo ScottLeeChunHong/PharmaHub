@@ -14,24 +14,24 @@
             <Authorized>
                 <div class="nav-item px-3">
                     <NavLink class="nav-link" href="authentication/profile" Match="NavLinkMatch.All">
-                        <span class="oi oi-person" aria-hidden="true"></span> Hello, @context.User.Identity?.Name!
+                        <span class="oi oi-person" aria-hidden="true"></span> Hello, @context.User.Identity?.Name
                     </NavLink>
                 </div>
                 <div class="nav-item px-3">
                     <NavLink class="nav-link" href="#" @onclick="BeginLogOut" Match="NavLinkMatch.All">
-                        <span class="oi oi-account-logout" aria-hidden="true"></span> Log Out
+                        <span class="oi oi-account-logout" aria-hidden="true"></span> Log out
                     </NavLink>
                 </div>
             </Authorized>
             <NotAuthorized>
                 <div class="nav-item px-3">
-                    <NavLink class="nav-link" href="authentication/profile" Match="NavLinkMatch.All">
+                    <NavLink class="nav-link" href="authentication/register" Match="NavLinkMatch.All">
                         <span class="oi oi-person" aria-hidden="true"></span> Register
                     </NavLink>
                 </div>
                 <div class="nav-item px-3">
-                    <NavLink class="nav-link" href="#" @onclick="BeginLogOut" Match="NavLinkMatch.All">
-                        <span class="oi oi-account-logout" aria-hidden="true"></span> Log In
+                    <NavLink class="nav-link" href="authentication/login" Match="NavLinkMatch.All">
+                        <span class="oi oi-account-login" aria-hidden="true"></span> Log in
                     </NavLink>
                 </div>
             </NotAuthorized>
@@ -42,17 +42,22 @@
             </NavLink>
         </div>
         <div class="nav-item px-3">
-            <NavLink class="nav-link" href="profile">
+            <NavLink class="nav-link" href="profilepage">
                 <span class="oi oi-list-rich" aria-hidden="true"></span> Profile
             </NavLink>
         </div>
         <div class="nav-item px-3">
-            <NavLink class="nav-link" href="categories">
-                <span class="oi oi-list-rich" aria-hidden="true"></span> Categories
+            <NavLink class="nav-link" href="chatpage">
+                <span class="oi oi-list-rich" aria-hidden="true"></span> Chat Page
             </NavLink>
         </div>
         <div class="nav-item px-3">
-            <NavLink class="nav-link" href="settings">
+            <NavLink class="nav-link" href="addlistingpage">
+                <span class="oi oi-list-rich" aria-hidden="true"></span> Add Listing Page
+            </NavLink>
+        </div>
+        <div class="nav-item px-3">
+            <NavLink class="nav-link" href="settingspage">
                 <span class="oi oi-list-rich" aria-hidden="true"></span> Settings
             </NavLink>
         </div>
