@@ -1,11 +1,10 @@
-﻿using PharmaHub.Server.Models;
+﻿using PharmaHub.Server.Configurations.Entities;
+using PharmaHub.Server.Models;
 using PharmaHub.Shared.Domain;
 using Duende.IdentityServer.EntityFramework.Options;
 using Microsoft.AspNetCore.ApiAuthorization.IdentityServer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
-using PharmaHub.Server.Models;
-using PharmaHub.Server.Configurations.Entities;
 
 namespace PharmaHub.Server.Data
 {
@@ -34,6 +33,11 @@ namespace PharmaHub.Server.Data
             base.OnModelCreating(builder);
 
             builder.ApplyConfiguration(new CategorySeedConfiguration());
+            builder.ApplyConfiguration(new ManufacturerSeedConfiguration());
+            builder.ApplyConfiguration(new CustomerSeedConfiguration());
+            builder.ApplyConfiguration(new UserSeedConfiguration());
+            builder.ApplyConfiguration(new RoleSeedConfiguration());
+            builder.ApplyConfiguration(new UserRoleSeedConfiguration());
         }
     }
 }
