@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using PharmaHub.Server.Data;
+using PharmaHub.Server.IRepository;
 using PharmaHub.Shared.Domain;
 
 namespace PharmaHub.Server.Controllers
@@ -14,61 +15,54 @@ namespace PharmaHub.Server.Controllers
     [ApiController]
     public class ManufacturersController : ControllerBase
     {
-        private readonly ApplicationDbContext _context;
+        private readonly IUnitOfWork _unitOfWork;
 
-        public ManufacturersController(ApplicationDbContext context)
+        public ManufacturersController(IUnitOfWork unitOfWork)
         {
-            _context = context;
+           _unitOfWork = unitOfWork;
         }
 
-        // GET: api/Manufacturers
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Manufacturer>>> GetManufacturers()
+        public async Task<IActionResult> GetManufacturers()
         {
-            if (_context.Manufacturers == null)
+            var Manufacturers = await _unitOfWork.Customers.GetAll();
+            if (Manufacturers == null)
             {
                 return NotFound();
             }
-            return await _context.Manufacturers.ToListAsync();
+            return Ok(Manufacturers);
         }
 
-        // GET: api/Manufacturers/5
         [HttpGet("{id}")]
         public async Task<ActionResult<Manufacturer>> GetManufacturer(int id)
         {
-            if (_context.Manufacturers == null)
-            {
-                return NotFound();
-            }
-            var manufacturer = await _context.Manufacturers.FindAsync(id);
+            var Manufacturer = await _unitOfWork.Customers.Get(q => q.Id == id);
 
-            if (manufacturer == null)
+            if (Manufacturer == null)
             {
                 return NotFound();
             }
 
-            return manufacturer;
+            return Ok(Manufacturer);
         }
 
-        // PUT: api/Manufacturers/5
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutManufacturer(int id, Manufacturer manufacturer)
+        public async Task<IActionResult> PutManufacturer(int id, Manufacturer Manufacturer)
         {
-            if (id != manufacturer.Id)
+            if (id != Manufacturer.Id)
             {
                 return BadRequest();
             }
 
-            _context.Entry(manufacturer).State = EntityState.Modified;
+            _unitOfWork.Manufacturers.Update(Manufacturer);
 
             try
             {
-                await _context.SaveChangesAsync();
+                await _unitOfWork.Save(HttpContext);
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!ManufacturerExists(id))
+                if (!await ManufacturerExists(id))
                 {
                     return NotFound();
                 }
@@ -81,44 +75,34 @@ namespace PharmaHub.Server.Controllers
             return NoContent();
         }
 
-        // POST: api/Manufacturers
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        public async Task<ActionResult<Manufacturer>> PostManufacturer(Manufacturer manufacturer)
+        public async Task<ActionResult<Manufacturer>> PostManufacturer(Manufacturer Manufacturer)
         {
-            if (_context.Manufacturers == null)
-            {
-                return Problem("Entity set 'ApplicationDbContext.Manufacturers'  is null.");
-            }
-            _context.Manufacturers.Add(manufacturer);
-            await _context.SaveChangesAsync();
+            await _unitOfWork.Manufacturers.Insert(Manufacturer);
+            await _unitOfWork.Save(HttpContext);
 
-            return CreatedAtAction("GetManufacturer", new { id = manufacturer.Id }, manufacturer);
+            return CreatedAtAction("GetManufacturer", new { id = Manufacturer.Id }, Manufacturer);
         }
 
-        // DELETE: api/Manufacturers/5
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteManufacturer(int id)
         {
-            if (_context.Manufacturers == null)
-            {
-                return NotFound();
-            }
-            var manufacturer = await _context.Manufacturers.FindAsync(id);
-            if (manufacturer == null)
+            var Manufacturer = await _unitOfWork.Manufacturers.Get(q => q.Id == id);
+            if (Manufacturer == null)
             {
                 return NotFound();
             }
 
-            _context.Manufacturers.Remove(manufacturer);
-            await _context.SaveChangesAsync();
+            await _unitOfWork.Manufacturers.Delete(id);
+            await _unitOfWork.Save(HttpContext);
 
             return NoContent();
         }
 
-        private bool ManufacturerExists(int id)
+        private async Task<bool> ManufacturerExists(int id)
         {
-            return (_context.Manufacturers?.Any(e => e.Id == id)).GetValueOrDefault();
+            var Manufacturer = await _unitOfWork.Manufacturers.Get(q => q.Id == id);
+            return Manufacturer != null;
         }
     }
 }
