@@ -1,11 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using PharmaHub.Shared.Domain;
-using System;
-using System.Collections.Generic;
-using System.Drawing;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace PharmaHub.Server.Configurations.Entities
 {
@@ -18,8 +13,8 @@ namespace PharmaHub.Server.Configurations.Entities
                 {
                     Id = 1,
                     Name = "FeverMed",
-                    Email = "fevermed@gmail.com",
                     Country = "China",
+                    Email = "fevermed@gmail.com",
                     Contact = "12345678",
                     DateCreated = DateTime.Now,
                     DateUpdated = DateTime.Now,
@@ -30,8 +25,8 @@ namespace PharmaHub.Server.Configurations.Entities
                 {
                     Id = 2,
                     Name = "AntiBio",
-                    Email = "biomed@gmail.com",
                     Country = "Germany",
+                    Email = "biomed@gmail.com",
                     Contact = "87654321",
                     DateCreated = DateTime.Now,
                     DateUpdated = DateTime.Now,
