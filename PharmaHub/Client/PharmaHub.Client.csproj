@@ -15,7 +15,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Content Remove="Pages\Manufacturers\ManufacturersCreate.razor" />
+    <Content Remove="Pages\Staff\StaffCreate.razor" />
   </ItemGroup>
 
   <ItemGroup>
@@ -34,15 +34,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <UpToDateCheckInput Remove="Pages\Manufacturers\ManufacturersCreate.razor" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <_ContentIncludedByDefault Remove="Pages\Manufacturers\ManufacturersCreate.razor" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <None Include="Pages\Manufacturers\ManufacturersCreate.razor" />
+    <None Include="Pages\Staff\StaffCreate.razor" />
   </ItemGroup>
 
 </Project>
