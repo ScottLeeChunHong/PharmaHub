@@ -12,10 +12,10 @@ namespace PharmaHub.Server.Configurations.Entities
                 new Manufacturer
                 {
                     Id = 1,
-                    Name = "FeverMed",
-                    Country = "China",
-                    Email = "fevermed@gmail.com",
-                    Contact = "12345678",
+                    ManuName = "FeverMed",
+                    ManuCountry = "China",
+                    ManuEmail = "fevermed@gmail.com",
+                    ManuContact = "12345678",
                     DateCreated = DateTime.Now,
                     DateUpdated = DateTime.Now,
                     CreatedBy = "System",
@@ -24,10 +24,10 @@ namespace PharmaHub.Server.Configurations.Entities
                 new Manufacturer
                 {
                     Id = 2,
-                    Name = "AntiBio",
-                    Country = "Germany",
-                    Email = "biomed@gmail.com",
-                    Contact = "87654321",
+                    ManuName = "AntiBio",
+                    ManuCountry = "Germany",
+                    ManuEmail = "biomed@gmail.com",
+                    ManuContact = "87654321",
                     DateCreated = DateTime.Now,
                     DateUpdated = DateTime.Now,
                     CreatedBy = "System",

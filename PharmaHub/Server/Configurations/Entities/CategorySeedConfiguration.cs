@@ -17,8 +17,8 @@ namespace PharmaHub.Server.Configurations.Entities
                 new Category
                 {
                     Id = 1,
-                    Name = "Antibiotics",
-                    Description = "For Bacterial Infections",
+                    CatName = "Antibiotics",
+                    CatDescription = "For Bacterial Infections",
                     DateCreated = DateTime.Now,
                     DateUpdated = DateTime.Now,
                     CreatedBy = "System",
@@ -27,8 +27,8 @@ namespace PharmaHub.Server.Configurations.Entities
                 new Category
                 {
                     Id = 2,
-                    Name = "Antifungals",
-                    Description = "For Fungal Infections",
+                    CatName = "Antifungals",
+                    CatDescription = "For Fungal Infections",
                     DateCreated = DateTime.Now,
                     DateUpdated = DateTime.Now,
                     CreatedBy = "System",

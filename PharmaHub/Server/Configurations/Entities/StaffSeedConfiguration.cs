@@ -17,10 +17,10 @@ namespace PharmaHub.Server.Configurations.Entities
                 new Staff
                 {
                     Id = 1,
-                    Name = "Joey Lim",
-                    Email = "joey@gmail.com",
-                    Position = "Head Doctor",
-                    Contact = "12345678",
+                    StaffName = "Joey Lim",
+                    StaffEmail = "joey@gmail.com",
+                    StaffPosition = "Head Doctor",
+                    StaffContact = "12345678",
                     DateCreated = DateTime.Now,
                     DateUpdated = DateTime.Now,
                     CreatedBy = "System",
@@ -29,10 +29,10 @@ namespace PharmaHub.Server.Configurations.Entities
                 new Staff
                 {
                     Id = 2,
-                    Name = "Rachel Wong",
-                    Email = "rwong@gmail.com",
-                    Position = "Assistant Nurse",
-                    Contact = "12345678",
+                    StaffName = "Rachel Wong",
+                    StaffEmail = "rwong@gmail.com",
+                    StaffPosition = "Assistant Nurse",
+                    StaffContact = "12345678",
                     DateCreated = DateTime.Now,
                     DateUpdated = DateTime.Now,
                     CreatedBy = "System",

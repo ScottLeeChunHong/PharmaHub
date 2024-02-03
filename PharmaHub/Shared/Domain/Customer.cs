@@ -8,9 +8,9 @@ namespace PharmaHub.Shared.Domain
 {
     public class Customer : BaseDomainModel
     {
-        public string? Name { get; set; }
-        public string? Address { get; set; }
-        public string? Email { get; set; }
-        public string? Contact { get; set; }
+        public string? CustName { get; set; }
+        public string? CustAddress { get; set; }
+        public string? CustEmail { get; set; }
+        public string? CustContact { get; set; }
     }
 }

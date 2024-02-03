@@ -1,0 +1,59 @@
+﻿@page "/manufacturers/create/"
+@inject HttpClient _client
+@inject NavigationManager _navManager
+<h3 class="card-title">Create New Manufacturer</h3>
+<hr />
+<br />
+
+<EditForm Model="manufacturer" OnValidSubmit="CreateManufacturer">
+    <DataAnnotationsValidator />
+    <ValidationSummary />
+
+    <div class="form-group">
+        <label>Manufacturer Name: </label>
+        <div>
+            <InputText @bind-Value="@manufacturer.ManuName" class="form-control" />
+            <ValidationMessage For="@(() => manufacturer.ManuName)" />
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label>Position: </label>
+        <div>
+            <InputText @bind-Value="@manufacturer.ManuCountry" class="form-control" />
+            <ValidationMessage For="@(() => manufacturer.ManuCountry)" />
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label>Contact Info: </label>
+        <div>
+            <InputText @bind-Value="@manufacturer.ManuContact" class="form-control" />
+            <ValidationMessage For="@(() => manufacturer.ManuContact)" />
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label>Email: </label>
+        <div>
+            <InputText @bind-Value="@manufacturer.ManuEmail" class="form-control" />
+            <ValidationMessage For="@(() => manufacturer.ManuEmail)" />
+        </div>
+    </div>
+
+
+    <button type="submit" class="btn btn-success btn-block">
+        Create Manufacturer
+    </button>
+</EditForm>
+
+@code
+{
+    Manufacturer manufacturer = new Manufacturer();
+
+    private async Task CreateManufacturer()
+    {
+        await _client.PostAsJsonAsync(Endpoints.ManufacturersEndpoint, manufacturer);
+        _navManager.NavigateTo("/manufacturer/");
+    }
+}

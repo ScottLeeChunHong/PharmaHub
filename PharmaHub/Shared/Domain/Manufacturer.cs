@@ -8,9 +8,9 @@ namespace PharmaHub.Shared.Domain
 {
     public class Manufacturer : BaseDomainModel
     {
-        public string? Name { get; set; }
-        public string? Email { get; set; }
-        public string? Country { get; set; }
-        public string? Contact { get; set; }
+        public string? ManuName { get; set; }
+        public string? ManuEmail { get; set; }
+        public string? ManuCountry { get; set; }
+        public string? ManuContact { get; set; }
     }
 }

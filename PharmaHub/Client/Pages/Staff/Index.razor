@@ -15,7 +15,7 @@
 
 @if (Staff == null)
 {
-    <div class="alert alert-info">Loading Staffs...</div>
+    <div class="alert alert-info">Loading Staff...</div>
 }
 else
 {
@@ -33,10 +33,10 @@ else
             @foreach (var staff in Staff)
             {
                 <tr>
-                    <td>@staff.Name</td>
-                    <td>@staff.Email</td>
-                    <td>@staff.Position</td>
-                    <td>@staff.Contact</td>
+                    <td>@staff.StaffName</td>
+                    <td>@staff.StaffEmail</td>
+                    <td>@staff.StaffPosition</td>
+                    <td>@staff.StaffContact</td>
                     <td>
                         <a href="staffs/view/@staff.Id" class="btn btn-primary">
                             <span class="oi oi-book"></span>

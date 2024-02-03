@@ -8,7 +8,7 @@ namespace PharmaHub.Shared.Domain
 {
     public class Category : BaseDomainModel
     {
-        public string? Name { get; set; }
-        public string? Description { get; set; }
+        public string? CatName { get; set; }
+        public string? CatDescription { get; set; }
     }
 }

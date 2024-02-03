@@ -9,11 +9,11 @@ using PharmaHub.Server.Data;
 
 #nullable disable
 
-namespace PharmaHub.Server.Data.Migrations
+namespace PharmaHub.Server.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20240114072907_AddApplicationTables")]
-    partial class AddApplicationTables
+    [Migration("20240203160446_AddedDefaultData")]
+    partial class AddedDefaultData
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -191,6 +191,20 @@ namespace PharmaHub.Server.Data.Migrations
                         .HasFilter("[NormalizedName] IS NOT NULL");
 
                     b.ToTable("AspNetRoles", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            Id = "ad2bcf0c-20db-474f-8407-5a6b159518ba",
+                            Name = "Administrator",
+                            NormalizedName = "ADMINISTRATOR"
+                        },
+                        new
+                        {
+                            Id = "bd2bcf0c-20db-474f-8407-5a6b159518bb",
+                            Name = "User",
+                            NormalizedName = "USER"
+                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -280,6 +294,13 @@ namespace PharmaHub.Server.Data.Migrations
                     b.HasIndex("RoleId");
 
                     b.ToTable("AspNetUserRoles", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            UserId = "3781efa7-66dc-47f0-860f-e506d04102e4",
+                            RoleId = "ad2bcf0c-20db-474f-8407-5a6b159518ba"
+                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>
@@ -372,6 +393,26 @@ namespace PharmaHub.Server.Data.Migrations
                         .HasFilter("[NormalizedUserName] IS NOT NULL");
 
                     b.ToTable("AspNetUsers", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            Id = "3781efa7-66dc-47f0-860f-e506d04102e4",
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "d509d942-ac10-4fbd-96be-98542dd25188",
+                            Email = "admin@localhost.com",
+                            EmailConfirmed = false,
+                            FirstName = "Admin",
+                            LastName = "User",
+                            LockoutEnabled = false,
+                            NormalizedEmail = "ADMIN@LOCALHOST.COM",
+                            NormalizedUserName = "ADMIN@LOCALHOST.COM",
+                            PasswordHash = "AQAAAAIAAYagAAAAEFahf7ep6AZqScrNUIDMf9M5wxs/rdv0ChNPegEhYXv/5vmeVq0IHo1NFHaUbTLtvA==",
+                            PhoneNumberConfirmed = false,
+                            SecurityStamp = "6be544c7-ba40-4d61-ba0e-6c58e4968d11",
+                            TwoFactorEnabled = false,
+                            UserName = "admin@localhost.com"
+                        });
                 });
 
             modelBuilder.Entity("PharmaHub.Shared.Domain.Category", b =>
@@ -382,6 +423,12 @@ namespace PharmaHub.Server.Data.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
+                    b.Property<string>("CatDescription")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("CatName")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("CreatedBy")
                         .HasColumnType("nvarchar(max)");
 
@@ -390,12 +437,6 @@ namespace PharmaHub.Server.Data.Migrations
 
                     b.Property<DateTime>("DateUpdated")
                         .HasColumnType("datetime2");
-
-                    b.Property<string>("Description")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Name")
-                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int?>("ProductId")
                         .HasColumnType("int");
@@ -408,6 +449,28 @@ namespace PharmaHub.Server.Data.Migrations
                     b.HasIndex("ProductId");
 
                     b.ToTable("Categories");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            CatDescription = "For Bacterial Infections",
+                            CatName = "Antibiotics",
+                            CreatedBy = "System",
+                            DateCreated = new DateTime(2024, 2, 4, 0, 4, 46, 313, DateTimeKind.Local).AddTicks(7722),
+                            DateUpdated = new DateTime(2024, 2, 4, 0, 4, 46, 313, DateTimeKind.Local).AddTicks(7736),
+                            UpdatedBy = "System"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            CatDescription = "For Fungal Infections",
+                            CatName = "Antifungals",
+                            CreatedBy = "System",
+                            DateCreated = new DateTime(2024, 2, 4, 0, 4, 46, 313, DateTimeKind.Local).AddTicks(7738),
+                            DateUpdated = new DateTime(2024, 2, 4, 0, 4, 46, 313, DateTimeKind.Local).AddTicks(7738),
+                            UpdatedBy = "System"
+                        });
                 });
 
             modelBuilder.Entity("PharmaHub.Shared.Domain.Customer", b =>
@@ -418,13 +481,19 @@ namespace PharmaHub.Server.Data.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<string>("Address")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Contact")
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<string>("CreatedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("CustAddress")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("CustContact")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("CustEmail")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("CustName")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("DateCreated")
@@ -433,18 +502,38 @@ namespace PharmaHub.Server.Data.Migrations
                     b.Property<DateTime>("DateUpdated")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("Email")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Name")
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<string>("UpdatedBy")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
                     b.ToTable("Customers");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            CreatedBy = "System",
+                            CustAddress = "1 Boon Lay Road",
+                            CustContact = "12345678",
+                            CustEmail = "joey@gmail.com",
+                            CustName = "Joey Lim",
+                            DateCreated = new DateTime(2024, 2, 4, 0, 4, 46, 313, DateTimeKind.Local).AddTicks(8404),
+                            DateUpdated = new DateTime(2024, 2, 4, 0, 4, 46, 313, DateTimeKind.Local).AddTicks(8405),
+                            UpdatedBy = "System"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            CreatedBy = "System",
+                            CustAddress = "1 Pasir Ris Drive",
+                            CustContact = "12345678",
+                            CustEmail = "rwong@gmail.com",
+                            CustName = "Rachel Wong",
+                            DateCreated = new DateTime(2024, 2, 4, 0, 4, 46, 313, DateTimeKind.Local).AddTicks(8407),
+                            DateUpdated = new DateTime(2024, 2, 4, 0, 4, 46, 313, DateTimeKind.Local).AddTicks(8408),
+                            UpdatedBy = "System"
+                        });
                 });
 
             modelBuilder.Entity("PharmaHub.Shared.Domain.Delivery", b =>
@@ -494,12 +583,6 @@ namespace PharmaHub.Server.Data.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<string>("Contact")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Country")
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<string>("CreatedBy")
                         .HasColumnType("nvarchar(max)");
 
@@ -509,10 +592,16 @@ namespace PharmaHub.Server.Data.Migrations
                     b.Property<DateTime>("DateUpdated")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("Email")
+                    b.Property<string>("ManuContact")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Name")
+                    b.Property<string>("ManuCountry")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ManuEmail")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ManuName")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("UpdatedBy")
@@ -521,6 +610,32 @@ namespace PharmaHub.Server.Data.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Manufacturers");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            CreatedBy = "System",
+                            DateCreated = new DateTime(2024, 2, 4, 0, 4, 46, 313, DateTimeKind.Local).AddTicks(8213),
+                            DateUpdated = new DateTime(2024, 2, 4, 0, 4, 46, 313, DateTimeKind.Local).AddTicks(8214),
+                            ManuContact = "12345678",
+                            ManuCountry = "China",
+                            ManuEmail = "fevermed@gmail.com",
+                            ManuName = "FeverMed",
+                            UpdatedBy = "System"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            CreatedBy = "System",
+                            DateCreated = new DateTime(2024, 2, 4, 0, 4, 46, 313, DateTimeKind.Local).AddTicks(8216),
+                            DateUpdated = new DateTime(2024, 2, 4, 0, 4, 46, 313, DateTimeKind.Local).AddTicks(8217),
+                            ManuContact = "87654321",
+                            ManuCountry = "Germany",
+                            ManuEmail = "biomed@gmail.com",
+                            ManuName = "AntiBio",
+                            UpdatedBy = "System"
+                        });
                 });
 
             modelBuilder.Entity("PharmaHub.Shared.Domain.Order", b =>
@@ -775,9 +890,6 @@ namespace PharmaHub.Server.Data.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<string>("Contact")
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<string>("CreatedBy")
                         .HasColumnType("nvarchar(max)");
 
@@ -787,13 +899,16 @@ namespace PharmaHub.Server.Data.Migrations
                     b.Property<DateTime>("DateUpdated")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("Email")
+                    b.Property<string>("StaffContact")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Name")
+                    b.Property<string>("StaffEmail")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Position")
+                    b.Property<string>("StaffName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("StaffPosition")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("UpdatedBy")
@@ -802,6 +917,32 @@ namespace PharmaHub.Server.Data.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Staff");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            CreatedBy = "System",
+                            DateCreated = new DateTime(2024, 2, 4, 0, 4, 46, 313, DateTimeKind.Local).AddTicks(8046),
+                            DateUpdated = new DateTime(2024, 2, 4, 0, 4, 46, 313, DateTimeKind.Local).AddTicks(8047),
+                            StaffContact = "12345678",
+                            StaffEmail = "joey@gmail.com",
+                            StaffName = "Joey Lim",
+                            StaffPosition = "Head Doctor",
+                            UpdatedBy = "System"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            CreatedBy = "System",
+                            DateCreated = new DateTime(2024, 2, 4, 0, 4, 46, 313, DateTimeKind.Local).AddTicks(8048),
+                            DateUpdated = new DateTime(2024, 2, 4, 0, 4, 46, 313, DateTimeKind.Local).AddTicks(8049),
+                            StaffContact = "12345678",
+                            StaffEmail = "rwong@gmail.com",
+                            StaffName = "Rachel Wong",
+                            StaffPosition = "Assistant Nurse",
+                            UpdatedBy = "System"
+                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>

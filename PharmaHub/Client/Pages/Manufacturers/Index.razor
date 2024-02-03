@@ -1,0 +1,77 @@
+﻿@page "/manufacturers/"
+@inject HttpClient _client
+@inject IJSRuntime js
+@attribute [Authorize]
+
+<h3 class=" = " card_title">Manufacturers</h3>
+<br />
+
+<a href="/manufacturer/create/" class="btn btn-secondary">
+    <span class="oi oi-plus"></span>
+    Create New Manufacturer
+</a>
+<br />
+<br />
+
+@if (Manufacturer == null)
+{
+    <div class="alert alert-info">Loading Manufacturers...</div>
+}
+else
+{
+    <table class="table table-responsive">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Country</th>
+                <th>Email Address</th>
+                <th>Contact Number</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var manufacturer in Manufacturer)
+            {
+                <tr>
+                    <td>@manufacturer.ManuName</td>
+                    <td>@manufacturer.ManuCountry</td>
+                    <td>@manufacturer.ManuEmail</td>
+                    <td>@manufacturer.ManuContact</td>
+                    <td>
+                        <a href="manufacturers/view/@manufacturer.Id" class="btn btn-primary">
+                            <span class="oi oi-book"></span>
+                        </a>
+                        <a href="manufacturers/edit/@manufacturer.Id" class="btn btn-warning">
+                            <span class="oi oi-pencil"></span>
+                        </a>
+                        <button class="btn btn-danger" @onclick="@(()=>Delete(manufacturer.Id))">
+                            <span class="oi oi-delete"></span>
+                        </button>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+@code {
+    private List<Manufacturer>? Manufacturer;
+
+    protected async override Task OnInitializedAsync()
+    {
+        Manufacturer = await _client.GetFromJsonAsync<List<Manufacturer>>($"{Endpoints.ManufacturersEndpoint}");
+    }
+
+
+    async Task Delete(int ManufacturerID)
+    {
+        if (Manufacturer != null)
+        {
+            var manufacturer = Manufacturer.First(q => q.Id == ManufacturerID);
+            var confirm = await js.InvokeAsync<bool>("confirm", "Do you want to delete this manufacturer?");
+            if (confirm)
+            {
+                await _client.DeleteAsync($"{Endpoints.ManufacturersEndpoint}/{ManufacturerID}");
+            }
+        }
+    }
+}

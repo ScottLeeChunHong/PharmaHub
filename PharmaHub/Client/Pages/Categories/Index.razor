@@ -1,0 +1,85 @@
+﻿@page "/categories/"
+@inject HttpClient _client
+@inject IJSRuntime js
+@attribute [Authorize]
+
+<h3 class=" = " card_title">Mategories</h3>
+<br />
+
+<a href="/categories/create" class="btn btn-secondary">
+    <span class="oi oi-plus"></span>
+    Create New Category
+</a>
+<br />
+<br />
+
+@if (Categories == null)
+{
+    <div class="alert alert-info">Loading Categories...</div>
+}
+else
+{
+    <table class="table table-responsive">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var category in Categories)
+            {
+                <tr>
+                    <td>@category.Name</td>
+                    <td>@category.Description</td>
+                    <td>
+                        <a href="categories/view/@category.Id" class="btn btn-primary">
+                            <span class="oi oi-book"></span>
+                        </a>
+                        <a href="categories/edit/@category.Id" class="btn btn-warning">
+                            <span class="oi oi-pencil"></span>
+                        </a>
+                        <button class="btn btn-danger" @onclick="@(()=>Delete(category.Id))">
+                            <span class="oi oi-delete"></span>
+                        </button>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+@code {
+    private List<Category>? Categories;
+
+    protected async override Task OnInitializedAsync()
+    {
+        try
+        {
+            Categories = await _client.GetFromJsonAsync<List<Category>>($"{Endpoints.CategoriesEndpoint}");
+        }
+        catch (HttpRequestException ex)
+        {
+            // Log the exception details
+            Console.WriteLine($"HTTP Request Exception: {ex.Message}");
+        }
+        catch (Exception ex)
+        {
+            // Log any other exceptions
+            Console.WriteLine($"An unexpected error occurred: {ex.Message}");
+        }
+    }
+
+    async Task Delete(int categoryID)
+    {
+        if (Categories != null)
+        {
+            var category = Categories.First(q => q.Id == categoryID);
+            var confirm = await js.InvokeAsync<bool>("confirm", "Do you want to delete this category?");
+            if (confirm)
+            {
+                await _client.DeleteAsync($"{Endpoints.CategoriesEndpoint}/{categoryID}");
+            }
+        }
+    }
+}

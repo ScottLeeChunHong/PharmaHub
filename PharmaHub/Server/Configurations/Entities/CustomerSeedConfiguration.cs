@@ -17,10 +17,10 @@ namespace PharmaHub.Server.Configurations.Entities
                 new Customer
                 {
                     Id = 1,
-                    Name = "Joey Lim",
-                    Email = "joey@gmail.com",
-                    Address = "1 Boon Lay Road",
-                    Contact = "12345678",
+                    CustName = "Joey Lim",
+                    CustEmail = "joey@gmail.com",
+                    CustAddress = "1 Boon Lay Road",
+                    CustContact = "12345678",
                     DateCreated = DateTime.Now,
                     DateUpdated = DateTime.Now,
                     CreatedBy = "System",
@@ -29,10 +29,10 @@ namespace PharmaHub.Server.Configurations.Entities
                 new Customer
                 {
                     Id = 2,
-                    Name = "Rachel Wong",
-                    Email = "rwong@gmail.com",
-                    Address = "1 Pasir Ris Drive",
-                    Contact = "12345678",
+                    CustName = "Rachel Wong",
+                    CustEmail = "rwong@gmail.com",
+                    CustAddress = "1 Pasir Ris Drive",
+                    CustContact = "12345678",
                     DateCreated = DateTime.Now,
                     DateUpdated = DateTime.Now,
                     CreatedBy = "System",
