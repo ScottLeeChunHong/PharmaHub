@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace PharmaHub.Server.Migrations
 {
     /// <inheritdoc />
-    public partial class AddedDefaultData : Migration
+    public partial class UpdatedCategoryClass : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -52,6 +52,24 @@ namespace PharmaHub.Server.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_AspNetUsers", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Categories",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    CatName = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    CatDescription = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    DateCreated = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    DateUpdated = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    CreatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    UpdatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Categories", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -305,7 +323,7 @@ namespace PharmaHub.Server.Migrations
                     ProductDescription = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     ProductPrice = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
                     ProductQuantity = table.Column<int>(type: "int", nullable: false),
-                    ProductExpiry = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    ProductExpiry = table.Column<DateTime>(type: "datetime2", nullable: true),
                     CategoryID = table.Column<int>(type: "int", nullable: false),
                     ManuID = table.Column<int>(type: "int", nullable: false),
                     ManufacturerId = table.Column<int>(type: "int", nullable: true),
@@ -317,6 +335,12 @@ namespace PharmaHub.Server.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Products", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Products_Categories_CategoryID",
+                        column: x => x.CategoryID,
+                        principalTable: "Categories",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_Products_Manufacturers_ManufacturerId",
                         column: x => x.ManufacturerId,
@@ -413,30 +437,6 @@ namespace PharmaHub.Server.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Categories",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    CatName = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    CatDescription = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    ProductId = table.Column<int>(type: "int", nullable: true),
-                    DateCreated = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    DateUpdated = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    CreatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    UpdatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Categories", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_Categories_Products_ProductId",
-                        column: x => x.ProductId,
-                        principalTable: "Products",
-                        principalColumn: "Id");
-                });
-
-            migrationBuilder.CreateTable(
                 name: "Deliveries",
                 columns: table => new
                 {
@@ -504,15 +504,15 @@ namespace PharmaHub.Server.Migrations
             migrationBuilder.InsertData(
                 table: "AspNetUsers",
                 columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Email", "EmailConfirmed", "FirstName", "LastName", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName" },
-                values: new object[] { "3781efa7-66dc-47f0-860f-e506d04102e4", 0, "d509d942-ac10-4fbd-96be-98542dd25188", "admin@localhost.com", false, "Admin", "User", false, null, "ADMIN@LOCALHOST.COM", "ADMIN@LOCALHOST.COM", "AQAAAAIAAYagAAAAEFahf7ep6AZqScrNUIDMf9M5wxs/rdv0ChNPegEhYXv/5vmeVq0IHo1NFHaUbTLtvA==", null, false, "6be544c7-ba40-4d61-ba0e-6c58e4968d11", false, "admin@localhost.com" });
+                values: new object[] { "3781efa7-66dc-47f0-860f-e506d04102e4", 0, "5cad8477-99ef-4df2-9bf3-9911b2e4813a", "admin@localhost.com", false, "Admin", "User", false, null, "ADMIN@LOCALHOST.COM", "ADMIN@LOCALHOST.COM", "AQAAAAIAAYagAAAAEOOuB2CAQDvvBBsoHSMmXvC7LRe497dkTSkn4Hnzot8Anz0fyS7grEWY+KHUHzjxWw==", null, false, "4453a92f-4989-409c-874f-d95c16482683", false, "admin@localhost.com" });
 
             migrationBuilder.InsertData(
                 table: "Categories",
-                columns: new[] { "Id", "CatDescription", "CatName", "CreatedBy", "DateCreated", "DateUpdated", "ProductId", "UpdatedBy" },
+                columns: new[] { "Id", "CatDescription", "CatName", "CreatedBy", "DateCreated", "DateUpdated", "UpdatedBy" },
                 values: new object[,]
                 {
-                    { 1, "For Bacterial Infections", "Antibiotics", "System", new DateTime(2024, 2, 4, 0, 4, 46, 313, DateTimeKind.Local).AddTicks(7722), new DateTime(2024, 2, 4, 0, 4, 46, 313, DateTimeKind.Local).AddTicks(7736), null, "System" },
-                    { 2, "For Fungal Infections", "Antifungals", "System", new DateTime(2024, 2, 4, 0, 4, 46, 313, DateTimeKind.Local).AddTicks(7738), new DateTime(2024, 2, 4, 0, 4, 46, 313, DateTimeKind.Local).AddTicks(7738), null, "System" }
+                    { 1, "For Bacterial Infections", "Antibiotics", "System", new DateTime(2024, 2, 4, 6, 26, 23, 367, DateTimeKind.Local).AddTicks(63), new DateTime(2024, 2, 4, 6, 26, 23, 367, DateTimeKind.Local).AddTicks(97), "System" },
+                    { 2, "For Fungal Infections", "Antifungals", "System", new DateTime(2024, 2, 4, 6, 26, 23, 367, DateTimeKind.Local).AddTicks(99), new DateTime(2024, 2, 4, 6, 26, 23, 367, DateTimeKind.Local).AddTicks(100), "System" }
                 });
 
             migrationBuilder.InsertData(
@@ -520,8 +520,8 @@ namespace PharmaHub.Server.Migrations
                 columns: new[] { "Id", "CreatedBy", "CustAddress", "CustContact", "CustEmail", "CustName", "DateCreated", "DateUpdated", "UpdatedBy" },
                 values: new object[,]
                 {
-                    { 1, "System", "1 Boon Lay Road", "12345678", "joey@gmail.com", "Joey Lim", new DateTime(2024, 2, 4, 0, 4, 46, 313, DateTimeKind.Local).AddTicks(8404), new DateTime(2024, 2, 4, 0, 4, 46, 313, DateTimeKind.Local).AddTicks(8405), "System" },
-                    { 2, "System", "1 Pasir Ris Drive", "12345678", "rwong@gmail.com", "Rachel Wong", new DateTime(2024, 2, 4, 0, 4, 46, 313, DateTimeKind.Local).AddTicks(8407), new DateTime(2024, 2, 4, 0, 4, 46, 313, DateTimeKind.Local).AddTicks(8408), "System" }
+                    { 1, "System", "1 Boon Lay Road", "12345678", "joey@gmail.com", "Joey Lim", new DateTime(2024, 2, 4, 6, 26, 23, 367, DateTimeKind.Local).AddTicks(928), new DateTime(2024, 2, 4, 6, 26, 23, 367, DateTimeKind.Local).AddTicks(928), "System" },
+                    { 2, "System", "1 Pasir Ris Drive", "12345678", "rwong@gmail.com", "Rachel Wong", new DateTime(2024, 2, 4, 6, 26, 23, 367, DateTimeKind.Local).AddTicks(931), new DateTime(2024, 2, 4, 6, 26, 23, 367, DateTimeKind.Local).AddTicks(931), "System" }
                 });
 
             migrationBuilder.InsertData(
@@ -529,8 +529,8 @@ namespace PharmaHub.Server.Migrations
                 columns: new[] { "Id", "CreatedBy", "DateCreated", "DateUpdated", "ManuContact", "ManuCountry", "ManuEmail", "ManuName", "UpdatedBy" },
                 values: new object[,]
                 {
-                    { 1, "System", new DateTime(2024, 2, 4, 0, 4, 46, 313, DateTimeKind.Local).AddTicks(8213), new DateTime(2024, 2, 4, 0, 4, 46, 313, DateTimeKind.Local).AddTicks(8214), "12345678", "China", "fevermed@gmail.com", "FeverMed", "System" },
-                    { 2, "System", new DateTime(2024, 2, 4, 0, 4, 46, 313, DateTimeKind.Local).AddTicks(8216), new DateTime(2024, 2, 4, 0, 4, 46, 313, DateTimeKind.Local).AddTicks(8217), "87654321", "Germany", "biomed@gmail.com", "AntiBio", "System" }
+                    { 1, "System", new DateTime(2024, 2, 4, 6, 26, 23, 367, DateTimeKind.Local).AddTicks(726), new DateTime(2024, 2, 4, 6, 26, 23, 367, DateTimeKind.Local).AddTicks(726), "12345678", "China", "fevermed@gmail.com", "FeverMed", "System" },
+                    { 2, "System", new DateTime(2024, 2, 4, 6, 26, 23, 367, DateTimeKind.Local).AddTicks(730), new DateTime(2024, 2, 4, 6, 26, 23, 367, DateTimeKind.Local).AddTicks(730), "87654321", "Germany", "biomed@gmail.com", "AntiBio", "System" }
                 });
 
             migrationBuilder.InsertData(
@@ -538,8 +538,8 @@ namespace PharmaHub.Server.Migrations
                 columns: new[] { "Id", "CreatedBy", "DateCreated", "DateUpdated", "StaffContact", "StaffEmail", "StaffName", "StaffPosition", "UpdatedBy" },
                 values: new object[,]
                 {
-                    { 1, "System", new DateTime(2024, 2, 4, 0, 4, 46, 313, DateTimeKind.Local).AddTicks(8046), new DateTime(2024, 2, 4, 0, 4, 46, 313, DateTimeKind.Local).AddTicks(8047), "12345678", "joey@gmail.com", "Joey Lim", "Head Doctor", "System" },
-                    { 2, "System", new DateTime(2024, 2, 4, 0, 4, 46, 313, DateTimeKind.Local).AddTicks(8048), new DateTime(2024, 2, 4, 0, 4, 46, 313, DateTimeKind.Local).AddTicks(8049), "12345678", "rwong@gmail.com", "Rachel Wong", "Assistant Nurse", "System" }
+                    { 1, "System", new DateTime(2024, 2, 4, 6, 26, 23, 367, DateTimeKind.Local).AddTicks(513), new DateTime(2024, 2, 4, 6, 26, 23, 367, DateTimeKind.Local).AddTicks(515), "12345678", "joey@gmail.com", "Joey Lim", "Head Doctor", "System" },
+                    { 2, "System", new DateTime(2024, 2, 4, 6, 26, 23, 367, DateTimeKind.Local).AddTicks(518), new DateTime(2024, 2, 4, 6, 26, 23, 367, DateTimeKind.Local).AddTicks(518), "12345678", "rwong@gmail.com", "Rachel Wong", "Assistant Nurse", "System" }
                 });
 
             migrationBuilder.InsertData(
@@ -585,11 +585,6 @@ namespace PharmaHub.Server.Migrations
                 column: "NormalizedUserName",
                 unique: true,
                 filter: "[NormalizedUserName] IS NOT NULL");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Categories_ProductId",
-                table: "Categories",
-                column: "ProductId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Deliveries_OrderID",
@@ -668,6 +663,11 @@ namespace PharmaHub.Server.Migrations
                 column: "ProductID");
 
             migrationBuilder.CreateIndex(
+                name: "IX_Products_CategoryID",
+                table: "Products",
+                column: "CategoryID");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Products_ManufacturerId",
                 table: "Products",
                 column: "ManufacturerId");
@@ -690,9 +690,6 @@ namespace PharmaHub.Server.Migrations
 
             migrationBuilder.DropTable(
                 name: "AspNetUserTokens");
-
-            migrationBuilder.DropTable(
-                name: "Categories");
 
             migrationBuilder.DropTable(
                 name: "Deliveries");
@@ -735,6 +732,9 @@ namespace PharmaHub.Server.Migrations
 
             migrationBuilder.DropTable(
                 name: "Staff");
+
+            migrationBuilder.DropTable(
+                name: "Categories");
 
             migrationBuilder.DropTable(
                 name: "Manufacturers");

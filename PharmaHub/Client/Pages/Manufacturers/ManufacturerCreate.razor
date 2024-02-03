@@ -18,7 +18,7 @@
     </div>
 
     <div class="form-group">
-        <label>Position: </label>
+        <label>Country: </label>
         <div>
             <InputText @bind-Value="@manufacturer.ManuCountry" class="form-control" />
             <ValidationMessage For="@(() => manufacturer.ManuCountry)" />
@@ -54,6 +54,6 @@
     private async Task CreateManufacturer()
     {
         await _client.PostAsJsonAsync(Endpoints.ManufacturersEndpoint, manufacturer);
-        _navManager.NavigateTo("/manufacturer/");
+        _navManager.NavigateTo("/manufacturers/");
     }
 }

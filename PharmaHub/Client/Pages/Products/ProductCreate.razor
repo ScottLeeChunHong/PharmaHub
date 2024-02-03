@@ -28,8 +28,8 @@
     <div class="form-group">
         <label>Price: </label>
         <div>
-            <InputText @bind-Value="@product.ProductDescription" class="form-control" />
-            <ValidationMessage For="@(() => product.ProductDescription)" />
+            <InputNumber @bind-Value="@product.ProductPrice" class="form-control" />
+            <ValidationMessage For="@(() => product.ProductPrice)" />
         </div>
     </div>
 
@@ -41,6 +41,33 @@
         </div>
     </div>
 
+    <div class="form-group">
+        <label>Expiry: </label>
+        <div>
+            <InputDate @bind-Value="@product.ProductExpiry" class="form-control" />
+            <ValidationMessage For="@(() => product.ProductExpiry)" />
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label>Category: </label>
+        <div>
+            <InputSelect @bind-Value="@product.CategoryID" class="form-control">
+                <option value=""> -- Select Category -- </option>
+                @if (Categories != null)
+                {
+                    foreach (var category in Categories)
+                    {
+                        <option value="@category.Id">@category.CatName</option>
+                    }
+                }
+            </InputSelect>
+
+            <ValidationMessage For="@(() => product.CategoryID)" />
+        </div>
+    </div>
+
+
 
     <button type="submit" class="btn btn-success btn-block">
         Create Product
@@ -51,9 +78,16 @@
 {
     Product product = new Product();
 
+    private IList<Category>? Categories;
+
+    protected async override Task OnInitializedAsync()
+    {
+        Categories = await _client.GetFromJsonAsync<List<Category>>($"{Endpoints.CategoriesEndpoint}");
+    }
+
     private async Task CreateProduct()
     {
         await _client.PostAsJsonAsync(Endpoints.ProductsEndpoint, product);
-        _navManager.NavigateTo("/product/");
+        _navManager.NavigateTo("/products/");
     }
 }

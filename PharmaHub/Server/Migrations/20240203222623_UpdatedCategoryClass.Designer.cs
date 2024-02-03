@@ -12,8 +12,8 @@ using PharmaHub.Server.Data;
 namespace PharmaHub.Server.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20240203160446_AddedDefaultData")]
-    partial class AddedDefaultData
+    [Migration("20240203222623_UpdatedCategoryClass")]
+    partial class UpdatedCategoryClass
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -399,7 +399,7 @@ namespace PharmaHub.Server.Migrations
                         {
                             Id = "3781efa7-66dc-47f0-860f-e506d04102e4",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "d509d942-ac10-4fbd-96be-98542dd25188",
+                            ConcurrencyStamp = "5cad8477-99ef-4df2-9bf3-9911b2e4813a",
                             Email = "admin@localhost.com",
                             EmailConfirmed = false,
                             FirstName = "Admin",
@@ -407,9 +407,9 @@ namespace PharmaHub.Server.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "ADMIN@LOCALHOST.COM",
                             NormalizedUserName = "ADMIN@LOCALHOST.COM",
-                            PasswordHash = "AQAAAAIAAYagAAAAEFahf7ep6AZqScrNUIDMf9M5wxs/rdv0ChNPegEhYXv/5vmeVq0IHo1NFHaUbTLtvA==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEOOuB2CAQDvvBBsoHSMmXvC7LRe497dkTSkn4Hnzot8Anz0fyS7grEWY+KHUHzjxWw==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "6be544c7-ba40-4d61-ba0e-6c58e4968d11",
+                            SecurityStamp = "4453a92f-4989-409c-874f-d95c16482683",
                             TwoFactorEnabled = false,
                             UserName = "admin@localhost.com"
                         });
@@ -438,15 +438,10 @@ namespace PharmaHub.Server.Migrations
                     b.Property<DateTime>("DateUpdated")
                         .HasColumnType("datetime2");
 
-                    b.Property<int?>("ProductId")
-                        .HasColumnType("int");
-
                     b.Property<string>("UpdatedBy")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("ProductId");
 
                     b.ToTable("Categories");
 
@@ -457,8 +452,8 @@ namespace PharmaHub.Server.Migrations
                             CatDescription = "For Bacterial Infections",
                             CatName = "Antibiotics",
                             CreatedBy = "System",
-                            DateCreated = new DateTime(2024, 2, 4, 0, 4, 46, 313, DateTimeKind.Local).AddTicks(7722),
-                            DateUpdated = new DateTime(2024, 2, 4, 0, 4, 46, 313, DateTimeKind.Local).AddTicks(7736),
+                            DateCreated = new DateTime(2024, 2, 4, 6, 26, 23, 367, DateTimeKind.Local).AddTicks(63),
+                            DateUpdated = new DateTime(2024, 2, 4, 6, 26, 23, 367, DateTimeKind.Local).AddTicks(97),
                             UpdatedBy = "System"
                         },
                         new
@@ -467,8 +462,8 @@ namespace PharmaHub.Server.Migrations
                             CatDescription = "For Fungal Infections",
                             CatName = "Antifungals",
                             CreatedBy = "System",
-                            DateCreated = new DateTime(2024, 2, 4, 0, 4, 46, 313, DateTimeKind.Local).AddTicks(7738),
-                            DateUpdated = new DateTime(2024, 2, 4, 0, 4, 46, 313, DateTimeKind.Local).AddTicks(7738),
+                            DateCreated = new DateTime(2024, 2, 4, 6, 26, 23, 367, DateTimeKind.Local).AddTicks(99),
+                            DateUpdated = new DateTime(2024, 2, 4, 6, 26, 23, 367, DateTimeKind.Local).AddTicks(100),
                             UpdatedBy = "System"
                         });
                 });
@@ -518,8 +513,8 @@ namespace PharmaHub.Server.Migrations
                             CustContact = "12345678",
                             CustEmail = "joey@gmail.com",
                             CustName = "Joey Lim",
-                            DateCreated = new DateTime(2024, 2, 4, 0, 4, 46, 313, DateTimeKind.Local).AddTicks(8404),
-                            DateUpdated = new DateTime(2024, 2, 4, 0, 4, 46, 313, DateTimeKind.Local).AddTicks(8405),
+                            DateCreated = new DateTime(2024, 2, 4, 6, 26, 23, 367, DateTimeKind.Local).AddTicks(928),
+                            DateUpdated = new DateTime(2024, 2, 4, 6, 26, 23, 367, DateTimeKind.Local).AddTicks(928),
                             UpdatedBy = "System"
                         },
                         new
@@ -530,8 +525,8 @@ namespace PharmaHub.Server.Migrations
                             CustContact = "12345678",
                             CustEmail = "rwong@gmail.com",
                             CustName = "Rachel Wong",
-                            DateCreated = new DateTime(2024, 2, 4, 0, 4, 46, 313, DateTimeKind.Local).AddTicks(8407),
-                            DateUpdated = new DateTime(2024, 2, 4, 0, 4, 46, 313, DateTimeKind.Local).AddTicks(8408),
+                            DateCreated = new DateTime(2024, 2, 4, 6, 26, 23, 367, DateTimeKind.Local).AddTicks(931),
+                            DateUpdated = new DateTime(2024, 2, 4, 6, 26, 23, 367, DateTimeKind.Local).AddTicks(931),
                             UpdatedBy = "System"
                         });
                 });
@@ -616,8 +611,8 @@ namespace PharmaHub.Server.Migrations
                         {
                             Id = 1,
                             CreatedBy = "System",
-                            DateCreated = new DateTime(2024, 2, 4, 0, 4, 46, 313, DateTimeKind.Local).AddTicks(8213),
-                            DateUpdated = new DateTime(2024, 2, 4, 0, 4, 46, 313, DateTimeKind.Local).AddTicks(8214),
+                            DateCreated = new DateTime(2024, 2, 4, 6, 26, 23, 367, DateTimeKind.Local).AddTicks(726),
+                            DateUpdated = new DateTime(2024, 2, 4, 6, 26, 23, 367, DateTimeKind.Local).AddTicks(726),
                             ManuContact = "12345678",
                             ManuCountry = "China",
                             ManuEmail = "fevermed@gmail.com",
@@ -628,8 +623,8 @@ namespace PharmaHub.Server.Migrations
                         {
                             Id = 2,
                             CreatedBy = "System",
-                            DateCreated = new DateTime(2024, 2, 4, 0, 4, 46, 313, DateTimeKind.Local).AddTicks(8216),
-                            DateUpdated = new DateTime(2024, 2, 4, 0, 4, 46, 313, DateTimeKind.Local).AddTicks(8217),
+                            DateCreated = new DateTime(2024, 2, 4, 6, 26, 23, 367, DateTimeKind.Local).AddTicks(730),
+                            DateUpdated = new DateTime(2024, 2, 4, 6, 26, 23, 367, DateTimeKind.Local).AddTicks(730),
                             ManuContact = "87654321",
                             ManuCountry = "Germany",
                             ManuEmail = "biomed@gmail.com",
@@ -822,7 +817,7 @@ namespace PharmaHub.Server.Migrations
                     b.Property<string>("ProductDescription")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTime>("ProductExpiry")
+                    b.Property<DateTime?>("ProductExpiry")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("ProductName")
@@ -838,6 +833,8 @@ namespace PharmaHub.Server.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("CategoryID");
 
                     b.HasIndex("ManufacturerId");
 
@@ -923,8 +920,8 @@ namespace PharmaHub.Server.Migrations
                         {
                             Id = 1,
                             CreatedBy = "System",
-                            DateCreated = new DateTime(2024, 2, 4, 0, 4, 46, 313, DateTimeKind.Local).AddTicks(8046),
-                            DateUpdated = new DateTime(2024, 2, 4, 0, 4, 46, 313, DateTimeKind.Local).AddTicks(8047),
+                            DateCreated = new DateTime(2024, 2, 4, 6, 26, 23, 367, DateTimeKind.Local).AddTicks(513),
+                            DateUpdated = new DateTime(2024, 2, 4, 6, 26, 23, 367, DateTimeKind.Local).AddTicks(515),
                             StaffContact = "12345678",
                             StaffEmail = "joey@gmail.com",
                             StaffName = "Joey Lim",
@@ -935,8 +932,8 @@ namespace PharmaHub.Server.Migrations
                         {
                             Id = 2,
                             CreatedBy = "System",
-                            DateCreated = new DateTime(2024, 2, 4, 0, 4, 46, 313, DateTimeKind.Local).AddTicks(8048),
-                            DateUpdated = new DateTime(2024, 2, 4, 0, 4, 46, 313, DateTimeKind.Local).AddTicks(8049),
+                            DateCreated = new DateTime(2024, 2, 4, 6, 26, 23, 367, DateTimeKind.Local).AddTicks(518),
+                            DateUpdated = new DateTime(2024, 2, 4, 6, 26, 23, 367, DateTimeKind.Local).AddTicks(518),
                             StaffContact = "12345678",
                             StaffEmail = "rwong@gmail.com",
                             StaffName = "Rachel Wong",
@@ -996,13 +993,6 @@ namespace PharmaHub.Server.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("PharmaHub.Shared.Domain.Category", b =>
-                {
-                    b.HasOne("PharmaHub.Shared.Domain.Product", null)
-                        .WithMany("Categories")
-                        .HasForeignKey("ProductId");
-                });
-
             modelBuilder.Entity("PharmaHub.Shared.Domain.Delivery", b =>
                 {
                     b.HasOne("PharmaHub.Shared.Domain.Order", "Order")
@@ -1057,9 +1047,17 @@ namespace PharmaHub.Server.Migrations
 
             modelBuilder.Entity("PharmaHub.Shared.Domain.Product", b =>
                 {
+                    b.HasOne("PharmaHub.Shared.Domain.Category", "Category")
+                        .WithMany()
+                        .HasForeignKey("CategoryID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.HasOne("PharmaHub.Shared.Domain.Manufacturer", "Manufacturer")
                         .WithMany()
                         .HasForeignKey("ManufacturerId");
+
+                    b.Navigation("Category");
 
                     b.Navigation("Manufacturer");
                 });
@@ -1084,11 +1082,6 @@ namespace PharmaHub.Server.Migrations
             modelBuilder.Entity("PharmaHub.Shared.Domain.Payment", b =>
                 {
                     b.Navigation("PaymentMethod");
-                });
-
-            modelBuilder.Entity("PharmaHub.Shared.Domain.Product", b =>
-                {
-                    b.Navigation("Categories");
                 });
 #pragma warning restore 612, 618
         }

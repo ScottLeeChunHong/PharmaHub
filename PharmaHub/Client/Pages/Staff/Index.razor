@@ -71,6 +71,7 @@ else
             if (confirm)
             {
                 await _client.DeleteAsync($"{Endpoints.StaffEndpoint}/{StaffID}");
+                StateHasChanged();
             }
         }
     }
