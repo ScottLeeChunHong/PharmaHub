@@ -4,6 +4,8 @@ using Microsoft.EntityFrameworkCore;
 using PharmaHub.Server.Data;
 using PharmaHub.Server.Models;
 using Microsoft.AspNetCore.Identity;
+using PharmaHub.Server.IRepository;
+using PharmaHub.Server.Repository;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -24,6 +26,8 @@ builder.Services.AddAuthentication()
 
 builder.Services.AddControllersWithViews();
 builder.Services.AddRazorPages();
+
+builder.Services.AddTransient<IUnitOfWork, UnitOfWork>();
 
 var app = builder.Build();
 

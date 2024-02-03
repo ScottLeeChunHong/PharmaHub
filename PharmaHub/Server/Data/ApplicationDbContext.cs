@@ -33,6 +33,7 @@ namespace PharmaHub.Server.Data
             base.OnModelCreating(builder);
 
             builder.ApplyConfiguration(new CategorySeedConfiguration());
+            builder.ApplyConfiguration(new StaffSeedConfiguration());
             builder.ApplyConfiguration(new ManufacturerSeedConfiguration());
             builder.ApplyConfiguration(new CustomerSeedConfiguration());
             builder.ApplyConfiguration(new UserSeedConfiguration());
