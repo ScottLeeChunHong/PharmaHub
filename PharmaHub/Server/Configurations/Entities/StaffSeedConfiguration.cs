@@ -17,8 +17,8 @@ namespace PharmaHub.Server.Configurations.Entities
                 new Staff
                 {
                     Id = 1,
-                    StaffName = "Joey Lim",
-                    StaffEmail = "joey@gmail.com",
+                    StaffName = "Jack Neo",
+                    StaffEmail = "jneo@gmail.com",
                     StaffPosition = "Head Doctor",
                     StaffContact = "12345678",
                     DateCreated = DateTime.Now,
@@ -29,8 +29,8 @@ namespace PharmaHub.Server.Configurations.Entities
                 new Staff
                 {
                     Id = 2,
-                    StaffName = "Rachel Wong",
-                    StaffEmail = "rwong@gmail.com",
+                    StaffName = "Vanessa Lim",
+                    StaffEmail = "vanessalim@gmail.com",
                     StaffPosition = "Assistant Nurse",
                     StaffContact = "12345678",
                     DateCreated = DateTime.Now,

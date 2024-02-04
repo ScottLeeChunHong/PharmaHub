@@ -27,7 +27,6 @@ else
                 <th>Price</th>
                 <th>Quantity</th>
                 <th>Expiry Date</th>
-                <th>Category</th>
                 <th>Actions</th>
             </tr>
         </thead>
@@ -40,7 +39,6 @@ else
                     <td>@product.ProductPrice</td>
                     <td>@product.ProductQuantity</td>
                     <td>@product.ProductExpiry</td>
-                    <td>@product.Category?.CatName</td>
                     <td>
                         <a href="products/view/@product.Id" class="btn btn-primary">
                             <span class="oi oi-book"></span>

@@ -11,6 +11,9 @@ namespace PharmaHub.Shared.Domain
         public DateTime DeliveryDate { get; set; }
         public string? DeliveryStatus { get; set; }
         public string? DeliveryAddress { get; set; }
+        public bool IsShippingSameAsRegistered { get; set; }
+        public int CustomerID { get; set; }
+        public virtual Customer? Customer { get; set; }
         public int OrderID { get; set; }
         public virtual Order? Order { get; set; }
     }

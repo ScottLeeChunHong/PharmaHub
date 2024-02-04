@@ -25,7 +25,7 @@ namespace PharmaHub.Server.Controllers
         [HttpGet]
         public async Task<IActionResult> GetManufacturers()
         {
-            var Manufacturers = await _unitOfWork.Customers.GetAll();
+            var Manufacturers = await _unitOfWork.Manufacturers.GetAll();
             if (Manufacturers == null)
             {
                 return NotFound();
@@ -36,7 +36,7 @@ namespace PharmaHub.Server.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<Manufacturer>> GetManufacturer(int id)
         {
-            var Manufacturer = await _unitOfWork.Customers.Get(q => q.Id == id);
+            var Manufacturer = await _unitOfWork.Manufacturers.Get(q => q.Id == id);
 
             if (Manufacturer == null)
             {

@@ -1,0 +1,22 @@
+﻿@page "/manufacturers/edit/{id:int}"
+@inject HttpClient _client
+@inject NavigationManager _navManager
+<h3>Edit Manufacturer Details</h3>
+
+<FormComponent ButtonText="Update" OnValidSubmit="EditManufacturer" manufacturer="manufacturer" />
+
+@code {
+    [Parameter] public int id { get; set; }
+    Manufacturer? manufacturer = new Manufacturer();
+
+    protected async override Task OnParametersSetAsync()
+    {
+        manufacturer = await _client.GetFromJsonAsync<Manufacturer>($"{Endpoints.ManufacturersEndpoint}/{id}");
+    }
+
+    async Task EditManufacturer()
+    {
+        await _client.PutAsJsonAsync($"{Endpoints.ManufacturersEndpoint}/{id}", manufacturer);
+        _navManager.NavigateTo("/manufacturers/");
+    }
+}

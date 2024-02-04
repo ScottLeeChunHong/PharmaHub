@@ -12,5 +12,6 @@ namespace PharmaHub.Shared.Domain
         public string? CustAddress { get; set; }
         public string? CustEmail { get; set; }
         public string? CustContact { get; set; }
+        public virtual Delivery? Delivery { get; set; }
     }
 }

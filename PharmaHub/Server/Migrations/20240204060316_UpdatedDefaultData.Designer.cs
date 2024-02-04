@@ -12,8 +12,8 @@ using PharmaHub.Server.Data;
 namespace PharmaHub.Server.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20240203222623_UpdatedCategoryClass")]
-    partial class UpdatedCategoryClass
+    [Migration("20240204060316_UpdatedDefaultData")]
+    partial class UpdatedDefaultData
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -399,7 +399,7 @@ namespace PharmaHub.Server.Migrations
                         {
                             Id = "3781efa7-66dc-47f0-860f-e506d04102e4",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "5cad8477-99ef-4df2-9bf3-9911b2e4813a",
+                            ConcurrencyStamp = "2620a7c0-9ec2-4a2d-b429-40083176b567",
                             Email = "admin@localhost.com",
                             EmailConfirmed = false,
                             FirstName = "Admin",
@@ -407,9 +407,9 @@ namespace PharmaHub.Server.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "ADMIN@LOCALHOST.COM",
                             NormalizedUserName = "ADMIN@LOCALHOST.COM",
-                            PasswordHash = "AQAAAAIAAYagAAAAEOOuB2CAQDvvBBsoHSMmXvC7LRe497dkTSkn4Hnzot8Anz0fyS7grEWY+KHUHzjxWw==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEHTcLxZnPGki+7B9dPRV9ZjdexCFQ8+52KZUFwWqqgqLR7O2L6FlkkO+CzlIYF6h2A==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "4453a92f-4989-409c-874f-d95c16482683",
+                            SecurityStamp = "e7fc4ea9-55a8-4dba-9fd6-6e37d84194c4",
                             TwoFactorEnabled = false,
                             UserName = "admin@localhost.com"
                         });
@@ -452,8 +452,8 @@ namespace PharmaHub.Server.Migrations
                             CatDescription = "For Bacterial Infections",
                             CatName = "Antibiotics",
                             CreatedBy = "System",
-                            DateCreated = new DateTime(2024, 2, 4, 6, 26, 23, 367, DateTimeKind.Local).AddTicks(63),
-                            DateUpdated = new DateTime(2024, 2, 4, 6, 26, 23, 367, DateTimeKind.Local).AddTicks(97),
+                            DateCreated = new DateTime(2024, 2, 4, 14, 3, 16, 137, DateTimeKind.Local).AddTicks(1019),
+                            DateUpdated = new DateTime(2024, 2, 4, 14, 3, 16, 137, DateTimeKind.Local).AddTicks(1033),
                             UpdatedBy = "System"
                         },
                         new
@@ -462,8 +462,8 @@ namespace PharmaHub.Server.Migrations
                             CatDescription = "For Fungal Infections",
                             CatName = "Antifungals",
                             CreatedBy = "System",
-                            DateCreated = new DateTime(2024, 2, 4, 6, 26, 23, 367, DateTimeKind.Local).AddTicks(99),
-                            DateUpdated = new DateTime(2024, 2, 4, 6, 26, 23, 367, DateTimeKind.Local).AddTicks(100),
+                            DateCreated = new DateTime(2024, 2, 4, 14, 3, 16, 137, DateTimeKind.Local).AddTicks(1035),
+                            DateUpdated = new DateTime(2024, 2, 4, 14, 3, 16, 137, DateTimeKind.Local).AddTicks(1035),
                             UpdatedBy = "System"
                         });
                 });
@@ -513,8 +513,8 @@ namespace PharmaHub.Server.Migrations
                             CustContact = "12345678",
                             CustEmail = "joey@gmail.com",
                             CustName = "Joey Lim",
-                            DateCreated = new DateTime(2024, 2, 4, 6, 26, 23, 367, DateTimeKind.Local).AddTicks(928),
-                            DateUpdated = new DateTime(2024, 2, 4, 6, 26, 23, 367, DateTimeKind.Local).AddTicks(928),
+                            DateCreated = new DateTime(2024, 2, 4, 14, 3, 16, 137, DateTimeKind.Local).AddTicks(1766),
+                            DateUpdated = new DateTime(2024, 2, 4, 14, 3, 16, 137, DateTimeKind.Local).AddTicks(1767),
                             UpdatedBy = "System"
                         },
                         new
@@ -525,8 +525,8 @@ namespace PharmaHub.Server.Migrations
                             CustContact = "12345678",
                             CustEmail = "rwong@gmail.com",
                             CustName = "Rachel Wong",
-                            DateCreated = new DateTime(2024, 2, 4, 6, 26, 23, 367, DateTimeKind.Local).AddTicks(931),
-                            DateUpdated = new DateTime(2024, 2, 4, 6, 26, 23, 367, DateTimeKind.Local).AddTicks(931),
+                            DateCreated = new DateTime(2024, 2, 4, 14, 3, 16, 137, DateTimeKind.Local).AddTicks(1769),
+                            DateUpdated = new DateTime(2024, 2, 4, 14, 3, 16, 137, DateTimeKind.Local).AddTicks(1770),
                             UpdatedBy = "System"
                         });
                 });
@@ -611,8 +611,8 @@ namespace PharmaHub.Server.Migrations
                         {
                             Id = 1,
                             CreatedBy = "System",
-                            DateCreated = new DateTime(2024, 2, 4, 6, 26, 23, 367, DateTimeKind.Local).AddTicks(726),
-                            DateUpdated = new DateTime(2024, 2, 4, 6, 26, 23, 367, DateTimeKind.Local).AddTicks(726),
+                            DateCreated = new DateTime(2024, 2, 4, 14, 3, 16, 137, DateTimeKind.Local).AddTicks(1575),
+                            DateUpdated = new DateTime(2024, 2, 4, 14, 3, 16, 137, DateTimeKind.Local).AddTicks(1576),
                             ManuContact = "12345678",
                             ManuCountry = "China",
                             ManuEmail = "fevermed@gmail.com",
@@ -623,8 +623,8 @@ namespace PharmaHub.Server.Migrations
                         {
                             Id = 2,
                             CreatedBy = "System",
-                            DateCreated = new DateTime(2024, 2, 4, 6, 26, 23, 367, DateTimeKind.Local).AddTicks(730),
-                            DateUpdated = new DateTime(2024, 2, 4, 6, 26, 23, 367, DateTimeKind.Local).AddTicks(730),
+                            DateCreated = new DateTime(2024, 2, 4, 14, 3, 16, 137, DateTimeKind.Local).AddTicks(1577),
+                            DateUpdated = new DateTime(2024, 2, 4, 14, 3, 16, 137, DateTimeKind.Local).AddTicks(1578),
                             ManuContact = "87654321",
                             ManuCountry = "Germany",
                             ManuEmail = "biomed@gmail.com",
@@ -920,11 +920,11 @@ namespace PharmaHub.Server.Migrations
                         {
                             Id = 1,
                             CreatedBy = "System",
-                            DateCreated = new DateTime(2024, 2, 4, 6, 26, 23, 367, DateTimeKind.Local).AddTicks(513),
-                            DateUpdated = new DateTime(2024, 2, 4, 6, 26, 23, 367, DateTimeKind.Local).AddTicks(515),
+                            DateCreated = new DateTime(2024, 2, 4, 14, 3, 16, 137, DateTimeKind.Local).AddTicks(1394),
+                            DateUpdated = new DateTime(2024, 2, 4, 14, 3, 16, 137, DateTimeKind.Local).AddTicks(1395),
                             StaffContact = "12345678",
-                            StaffEmail = "joey@gmail.com",
-                            StaffName = "Joey Lim",
+                            StaffEmail = "jneo@gmail.com",
+                            StaffName = "Jack Neo",
                             StaffPosition = "Head Doctor",
                             UpdatedBy = "System"
                         },
@@ -932,11 +932,11 @@ namespace PharmaHub.Server.Migrations
                         {
                             Id = 2,
                             CreatedBy = "System",
-                            DateCreated = new DateTime(2024, 2, 4, 6, 26, 23, 367, DateTimeKind.Local).AddTicks(518),
-                            DateUpdated = new DateTime(2024, 2, 4, 6, 26, 23, 367, DateTimeKind.Local).AddTicks(518),
+                            DateCreated = new DateTime(2024, 2, 4, 14, 3, 16, 137, DateTimeKind.Local).AddTicks(1397),
+                            DateUpdated = new DateTime(2024, 2, 4, 14, 3, 16, 137, DateTimeKind.Local).AddTicks(1398),
                             StaffContact = "12345678",
-                            StaffEmail = "rwong@gmail.com",
-                            StaffName = "Rachel Wong",
+                            StaffEmail = "vanessalim@gmail.com",
+                            StaffName = "Vanessa Lim",
                             StaffPosition = "Assistant Nurse",
                             UpdatedBy = "System"
                         });

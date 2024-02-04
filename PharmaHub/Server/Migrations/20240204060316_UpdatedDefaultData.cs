@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace PharmaHub.Server.Migrations
 {
     /// <inheritdoc />
-    public partial class UpdatedCategoryClass : Migration
+    public partial class UpdatedDefaultData : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -504,15 +504,15 @@ namespace PharmaHub.Server.Migrations
             migrationBuilder.InsertData(
                 table: "AspNetUsers",
                 columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Email", "EmailConfirmed", "FirstName", "LastName", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName" },
-                values: new object[] { "3781efa7-66dc-47f0-860f-e506d04102e4", 0, "5cad8477-99ef-4df2-9bf3-9911b2e4813a", "admin@localhost.com", false, "Admin", "User", false, null, "ADMIN@LOCALHOST.COM", "ADMIN@LOCALHOST.COM", "AQAAAAIAAYagAAAAEOOuB2CAQDvvBBsoHSMmXvC7LRe497dkTSkn4Hnzot8Anz0fyS7grEWY+KHUHzjxWw==", null, false, "4453a92f-4989-409c-874f-d95c16482683", false, "admin@localhost.com" });
+                values: new object[] { "3781efa7-66dc-47f0-860f-e506d04102e4", 0, "2620a7c0-9ec2-4a2d-b429-40083176b567", "admin@localhost.com", false, "Admin", "User", false, null, "ADMIN@LOCALHOST.COM", "ADMIN@LOCALHOST.COM", "AQAAAAIAAYagAAAAEHTcLxZnPGki+7B9dPRV9ZjdexCFQ8+52KZUFwWqqgqLR7O2L6FlkkO+CzlIYF6h2A==", null, false, "e7fc4ea9-55a8-4dba-9fd6-6e37d84194c4", false, "admin@localhost.com" });
 
             migrationBuilder.InsertData(
                 table: "Categories",
                 columns: new[] { "Id", "CatDescription", "CatName", "CreatedBy", "DateCreated", "DateUpdated", "UpdatedBy" },
                 values: new object[,]
                 {
-                    { 1, "For Bacterial Infections", "Antibiotics", "System", new DateTime(2024, 2, 4, 6, 26, 23, 367, DateTimeKind.Local).AddTicks(63), new DateTime(2024, 2, 4, 6, 26, 23, 367, DateTimeKind.Local).AddTicks(97), "System" },
-                    { 2, "For Fungal Infections", "Antifungals", "System", new DateTime(2024, 2, 4, 6, 26, 23, 367, DateTimeKind.Local).AddTicks(99), new DateTime(2024, 2, 4, 6, 26, 23, 367, DateTimeKind.Local).AddTicks(100), "System" }
+                    { 1, "For Bacterial Infections", "Antibiotics", "System", new DateTime(2024, 2, 4, 14, 3, 16, 137, DateTimeKind.Local).AddTicks(1019), new DateTime(2024, 2, 4, 14, 3, 16, 137, DateTimeKind.Local).AddTicks(1033), "System" },
+                    { 2, "For Fungal Infections", "Antifungals", "System", new DateTime(2024, 2, 4, 14, 3, 16, 137, DateTimeKind.Local).AddTicks(1035), new DateTime(2024, 2, 4, 14, 3, 16, 137, DateTimeKind.Local).AddTicks(1035), "System" }
                 });
 
             migrationBuilder.InsertData(
@@ -520,8 +520,8 @@ namespace PharmaHub.Server.Migrations
                 columns: new[] { "Id", "CreatedBy", "CustAddress", "CustContact", "CustEmail", "CustName", "DateCreated", "DateUpdated", "UpdatedBy" },
                 values: new object[,]
                 {
-                    { 1, "System", "1 Boon Lay Road", "12345678", "joey@gmail.com", "Joey Lim", new DateTime(2024, 2, 4, 6, 26, 23, 367, DateTimeKind.Local).AddTicks(928), new DateTime(2024, 2, 4, 6, 26, 23, 367, DateTimeKind.Local).AddTicks(928), "System" },
-                    { 2, "System", "1 Pasir Ris Drive", "12345678", "rwong@gmail.com", "Rachel Wong", new DateTime(2024, 2, 4, 6, 26, 23, 367, DateTimeKind.Local).AddTicks(931), new DateTime(2024, 2, 4, 6, 26, 23, 367, DateTimeKind.Local).AddTicks(931), "System" }
+                    { 1, "System", "1 Boon Lay Road", "12345678", "joey@gmail.com", "Joey Lim", new DateTime(2024, 2, 4, 14, 3, 16, 137, DateTimeKind.Local).AddTicks(1766), new DateTime(2024, 2, 4, 14, 3, 16, 137, DateTimeKind.Local).AddTicks(1767), "System" },
+                    { 2, "System", "1 Pasir Ris Drive", "12345678", "rwong@gmail.com", "Rachel Wong", new DateTime(2024, 2, 4, 14, 3, 16, 137, DateTimeKind.Local).AddTicks(1769), new DateTime(2024, 2, 4, 14, 3, 16, 137, DateTimeKind.Local).AddTicks(1770), "System" }
                 });
 
             migrationBuilder.InsertData(
@@ -529,8 +529,8 @@ namespace PharmaHub.Server.Migrations
                 columns: new[] { "Id", "CreatedBy", "DateCreated", "DateUpdated", "ManuContact", "ManuCountry", "ManuEmail", "ManuName", "UpdatedBy" },
                 values: new object[,]
                 {
-                    { 1, "System", new DateTime(2024, 2, 4, 6, 26, 23, 367, DateTimeKind.Local).AddTicks(726), new DateTime(2024, 2, 4, 6, 26, 23, 367, DateTimeKind.Local).AddTicks(726), "12345678", "China", "fevermed@gmail.com", "FeverMed", "System" },
-                    { 2, "System", new DateTime(2024, 2, 4, 6, 26, 23, 367, DateTimeKind.Local).AddTicks(730), new DateTime(2024, 2, 4, 6, 26, 23, 367, DateTimeKind.Local).AddTicks(730), "87654321", "Germany", "biomed@gmail.com", "AntiBio", "System" }
+                    { 1, "System", new DateTime(2024, 2, 4, 14, 3, 16, 137, DateTimeKind.Local).AddTicks(1575), new DateTime(2024, 2, 4, 14, 3, 16, 137, DateTimeKind.Local).AddTicks(1576), "12345678", "China", "fevermed@gmail.com", "FeverMed", "System" },
+                    { 2, "System", new DateTime(2024, 2, 4, 14, 3, 16, 137, DateTimeKind.Local).AddTicks(1577), new DateTime(2024, 2, 4, 14, 3, 16, 137, DateTimeKind.Local).AddTicks(1578), "87654321", "Germany", "biomed@gmail.com", "AntiBio", "System" }
                 });
 
             migrationBuilder.InsertData(
@@ -538,8 +538,8 @@ namespace PharmaHub.Server.Migrations
                 columns: new[] { "Id", "CreatedBy", "DateCreated", "DateUpdated", "StaffContact", "StaffEmail", "StaffName", "StaffPosition", "UpdatedBy" },
                 values: new object[,]
                 {
-                    { 1, "System", new DateTime(2024, 2, 4, 6, 26, 23, 367, DateTimeKind.Local).AddTicks(513), new DateTime(2024, 2, 4, 6, 26, 23, 367, DateTimeKind.Local).AddTicks(515), "12345678", "joey@gmail.com", "Joey Lim", "Head Doctor", "System" },
-                    { 2, "System", new DateTime(2024, 2, 4, 6, 26, 23, 367, DateTimeKind.Local).AddTicks(518), new DateTime(2024, 2, 4, 6, 26, 23, 367, DateTimeKind.Local).AddTicks(518), "12345678", "rwong@gmail.com", "Rachel Wong", "Assistant Nurse", "System" }
+                    { 1, "System", new DateTime(2024, 2, 4, 14, 3, 16, 137, DateTimeKind.Local).AddTicks(1394), new DateTime(2024, 2, 4, 14, 3, 16, 137, DateTimeKind.Local).AddTicks(1395), "12345678", "jneo@gmail.com", "Jack Neo", "Head Doctor", "System" },
+                    { 2, "System", new DateTime(2024, 2, 4, 14, 3, 16, 137, DateTimeKind.Local).AddTicks(1397), new DateTime(2024, 2, 4, 14, 3, 16, 137, DateTimeKind.Local).AddTicks(1398), "12345678", "vanessalim@gmail.com", "Vanessa Lim", "Assistant Nurse", "System" }
                 });
 
             migrationBuilder.InsertData(

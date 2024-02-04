@@ -1,0 +1,31 @@
+﻿<EditForm Model="@category" OnValidSubmit="@OnValidSubmit">
+    <DataAnnotationsValidator />
+    <ValidationSummary />
+
+    <div class="form-group">
+        <label>Category Name: </label>
+        <div>
+            <InputText @bind-Value="@category.CatName" class="form-control" />
+            <ValidationMessage For="@(() => category.CatName)" />
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label>Description: </label>
+        <div>
+            <InputText @bind-Value="@category.CatDescription" class="form-control" />
+            <ValidationMessage For="@(() => category.CatDescription)" />
+        </div>
+    </div>
+
+
+    <button type="submit" class="btn btn-success btn-block">
+        @ButtonText
+    </button>
+</EditForm>
+
+@code {
+    [Parameter] public Category? category { get; set; }
+    [Parameter] public string ButtonText { get; set; } = "Save";
+    [Parameter] public EventCallback OnValidSubmit { get; set; }
+}
